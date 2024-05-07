@@ -1,3 +1,6 @@
+
+import { Skeleton } from "@/components/ui/skeleton"
+
 export function SkeletonLoader() {
   return (
     (<div key="1" className="px-4 py-6 md:px-6 md:py-12 lg:py-16">
@@ -8,21 +11,16 @@ export function SkeletonLoader() {
           Generating your article
           <LoaderIcon className="w-6 h-6 animate-spin duration-[3s]" />
         </h2>
-        <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-gray-200 rounded-md w-3/4 dark:bg-gray-700" />
-          <div className="flex items-center space-x-4">
-            <div className="h-10 w-10 bg-gray-200 rounded-full dark:bg-gray-700" />
-            <div className="space-y-2">
-              <div className="h-4 bg-gray-200 rounded-md w-32 dark:bg-gray-700" />
-              <div className="h-4 bg-gray-200 rounded-md w-24 dark:bg-gray-700" />
-            </div>
-          </div>
-          <div className="space-y-4">
-            <div className="h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-            <div className="h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-            <div className="h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-            <div className="h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-            <div className="h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
+        <div className="flex flex-col md:flex-row items-start gap-4">
+          <Skeleton className="h-32 md:h-40 w-full md:w-40 rounded-md" />
+          <div className="space-y-2 w-full">
+            <Skeleton className="h-6 w-64" />
+            <Skeleton className="h-4 w-48" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-3/4" />
+            <Skeleton className="h-4 w-3/5" />
+            <Skeleton className="h-2 w-3/5" />
           </div>
         </div>
       </div>
