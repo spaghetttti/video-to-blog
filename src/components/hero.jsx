@@ -5,6 +5,7 @@ import { CardContent, Card } from "@/components/ui/card"
 import ReactPlayer from "react-player"
 import { useState } from "react";
 import { BeatLoader } from 'react-spinners';
+import { SkeletonLoader } from "./skeleton-loader"
 
 
 
@@ -22,13 +23,12 @@ export function Hero() {
   };
 
   const handleSubmit = (event) => {
-    setIsLoading(true);
     event.preventDefault();
+    setIsLoading(true);
     const youtubeLink = document.getElementById('youtube-link').value;
     if (youtubeLink) {
       setUploadedVideo(youtubeLink);
     }
-    setIsLoading(false);
   };
 
   return (
@@ -41,37 +41,37 @@ export function Hero() {
             YouTube link, and we'll do the rest.
           </p>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 md:p-8 grid gap-6">
-            <div className="grid gap-4">
-              <h2 className="text-xl font-semibold">Add a Video</h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="video-file">Upload a Video</Label>
-                  <Input
-                    accept="video/*"
-                    className="w-full"
-                    id="video-file"
-                    type="file"
-                    onChange={handleFileChange}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="youtube-link">Or enter a YouTube link</Label>
-                  <Input
-                    className="w-full"
-                    id="youtube-link"
-                    placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                    type="url"
-                  />
-                </div>
+      { isLoading  ? <SkeletonLoader/> : <form onSubmit={handleSubmit}>
+        <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 md:p-8 grid gap-6">
+          <div className="grid gap-4">
+            <h2 className="text-xl font-semibold">Add a Video</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="video-file">Upload a Video</Label>
+                <Input
+                  accept="video/*"
+                  className="w-full"
+                  id="video-file"
+                  type="file"
+                  onChange={handleFileChange}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="youtube-link">Or enter a YouTube link</Label>
+                <Input
+                  className="w-full"
+                  id="youtube-link"
+                  placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  type="url"
+                />
               </div>
             </div>
-            <Button className="w-full md:w-auto" type="submit">
-            {isLoading ? <BeatLoader size={10} /> : 'Convert Video'}
-            </Button>
           </div>
-        </form>
+          <Button className="w-full md:w-auto" type="submit">
+          {isLoading ? <BeatLoader size={10} /> : 'Convert Video'}
+          </Button>
+        </div>
+      </form> }
 
         {uploadedVideo && (
           <div className="mb-4 flex justify-center">
