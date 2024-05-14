@@ -6,8 +6,7 @@ import ReactPlayer from "react-player"
 import { useState } from "react";
 import { BeatLoader } from 'react-spinners';
 import { SkeletonLoader } from "./skeleton-loader"
-
-
+import ArticleCard from './article-card';
 
 
 
@@ -15,6 +14,8 @@ export function Hero() {
 
   const [uploadedVideo, setUploadedVideo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isArticle, setIsArticle] = useState(false);
+
 
 
   const handleFileChange = (event) => {
@@ -25,6 +26,11 @@ export function Hero() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsArticle(true);
+
+    }, 2000);
     const youtubeLink = document.getElementById('youtube-link').value;
     if (youtubeLink) {
       setUploadedVideo(youtubeLink);
@@ -41,44 +47,49 @@ export function Hero() {
             YouTube link, and we'll do the rest.
           </p>
         </div>
-      { isLoading  ? <SkeletonLoader/> : <form onSubmit={handleSubmit}>
-        <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 md:p-8 grid gap-6">
-          <div className="grid gap-4">
-            <h2 className="text-xl font-semibold">Add a Video</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="video-file">Upload a Video</Label>
-                <Input
-                  accept="video/*"
-                  className="w-full"
-                  id="video-file"
-                  type="file"
-                  onChange={handleFileChange}
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="youtube-link">Or enter a YouTube link</Label>
-                <Input
-                  className="w-full"
-                  id="youtube-link"
-                  placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                  type="url"
-                />
+        {isLoading ? <SkeletonLoader /> : !isArticle && <form onSubmit={handleSubmit}>
+          <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 md:p-8 grid gap-6">
+            <div className="grid gap-4">
+              <h2 className="text-xl font-semibold">Add a Video</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="video-file">Upload a Video</Label>
+                  <Input
+                    accept="video/*"
+                    className="w-full"
+                    id="video-file"
+                    type="file"
+                    onChange={handleFileChange}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="youtube-link">Or enter a YouTube link</Label>
+                  <Input
+                    className="w-full"
+                    id="youtube-link"
+                    placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                    type="url"
+                  />
+                </div>
               </div>
             </div>
+            <Button className="w-full md:w-auto" type="submit">
+              {isLoading ? <BeatLoader size={10} /> : 'Convert Video'}
+            </Button>
           </div>
-          <Button className="w-full md:w-auto" type="submit">
-          {isLoading ? <BeatLoader size={10} /> : 'Convert Video'}
-          </Button>
-        </div>
-      </form> }
+        </form>}
 
-        {uploadedVideo && (
+        {uploadedVideo && !isArticle && (
           <div className="mb-4 flex justify-center">
             <ReactPlayer url={uploadedVideo} controls />
           </div>
         )}
-        <div className="grid gap-6">
+
+        {!isLoading && isArticle && <div>
+          <h2 className="text-xl font-semibold">Your article is ready!</h2>
+              <ArticleCard />
+          </div>}       
+           <div className="grid gap-6">
           <h2 className="text-xl font-semibold">Converted Videos</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <Card>
