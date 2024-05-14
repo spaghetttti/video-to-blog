@@ -21,7 +21,7 @@ export function Hero() {
   const handleYoutubeLinkChange = (event) => {
     setYoutubeLink(event.target.value)
   }
-console.log('check', process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST)
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -38,7 +38,7 @@ console.log('check', process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST)
         console.log('Success:', data);
         setIsLoading(false);
         // Handle successful response (e.g., display message)
-      } catch (error) {
+      } catch (error) {p
         console.error('Error:', error);
         setIsLoading(false);
         // Handle errors (e.g., display error message)
