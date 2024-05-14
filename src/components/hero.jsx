@@ -6,35 +6,72 @@ import ReactPlayer from "react-player"
 import { useState } from "react";
 import { BeatLoader } from 'react-spinners';
 import { SkeletonLoader } from "./skeleton-loader"
-import ArticleCard from './article-card';
-
-
-
+import ArticleCard from "./article-card"
 export function Hero() {
-
-  const [uploadedVideo, setUploadedVideo] = useState(null);
+  const [youtubeLink, setYoutubeLink] = useState('');
+  const [videoFile, setVideoFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isArticle, setIsArticle] = useState(false);
-
+  const [isFinished, setIsFinished] = useState(false);
 
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    setUploadedVideo(URL.createObjectURL(file));
+    setVideoFile(URL.createObjectURL(file));
   };
 
-  const handleSubmit = (event) => {
+  const handleYoutubeLinkChange = (event) => {
+    setYoutubeLink(event.target.value)
+  }
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      setIsArticle(true);
+      setIsFinished(true);
 
-    }, 2000);
-    const youtubeLink = document.getElementById('youtube-link').value;
-    if (youtubeLink) {
-      setUploadedVideo(youtubeLink);
-    }
+    }, 3000);
+    // if (youtubeLink) {
+    //   try {
+    //     const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST}/process-youtube-link`, {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify({ youtubeLink }),
+    //     });
+    //     const data = await response.json();
+    //     console.log('Success:', data);
+    //     setIsLoading(false);
+    //     // Handle successful response (e.g., display message)
+    //   } catch (error) {
+    //     console.error('Error:', error);
+    //     setIsLoading(false);
+    //     // Handle errors (e.g., display error message)
+    //   }
+    // } else if (videoFile) {
+    //   try {
+    //     const formData = new FormData();
+    //     formData.append('videoFile', videoFile);
+
+    //     const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST}/process-video-file`, {
+    //       method: 'POST',
+    //       body: formData,
+    //     });
+    //     const data = await response.json();
+    //     console.log('Success:', data);
+    //     setIsLoading(false);
+    //     // Handle successful response (e.g., display message)
+    //   } catch (error) {
+    //     console.error('Error:', error);
+    //     setIsLoading(false);
+    //     // Handle errors (e.g., display error message)
+    //   }
+    // } else {
+    //   // Handle case where neither link nor file is provided
+    //   console.error('Please provide either a YouTube link or a YouTube video file');
+    //   setIsLoading(false);
+    // }
   };
 
   return (
@@ -47,7 +84,7 @@ export function Hero() {
             YouTube link, and we'll do the rest.
           </p>
         </div>
-        {isLoading ? <SkeletonLoader /> : !isArticle && <form onSubmit={handleSubmit}>
+        {isLoading ? <SkeletonLoader /> : !isFinished && <form onSubmit={handleSubmit}>
           <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 md:p-8 grid gap-6">
             <div className="grid gap-4">
               <h2 className="text-xl font-semibold">Add a Video</h2>
@@ -69,6 +106,7 @@ export function Hero() {
                     id="youtube-link"
                     placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                     type="url"
+                    onChange={handleYoutubeLinkChange}
                   />
                 </div>
               </div>
@@ -79,13 +117,18 @@ export function Hero() {
           </div>
         </form>}
 
-        {uploadedVideo && !isArticle && (
+        {videoFile && !isFinished && (
           <div className="mb-4 flex justify-center">
-            <ReactPlayer url={uploadedVideo} controls />
+            <ReactPlayer url={videoFile} controls />
+          </div>
+        )}
+         {youtubeLink && !isFinished && (
+          <div className="mb-4 flex justify-center">
+            <ReactPlayer url={youtubeLink} controls />
           </div>
         )}
 
-        {!isLoading && isArticle && <div>
+        {!isLoading && isFinished && <div>
           <h2 className="text-xl font-semibold">Your article is ready!</h2>
               <ArticleCard />
           </div>}       

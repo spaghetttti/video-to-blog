@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default function ArticleCard() {
   return (
-    <Link href="/article/[id]" as={`/article/1`} passHref>
+    <Link href="/article/[id]" as={`/articles/1`} passHref>
       <div className="block px-4 py-6 md:px-6 md:py-12 lg:py-16 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer">
         <div className="prose prose-gray max-w-6xl mx-auto dark:prose-invert">
           <div className="flex flex-col md:flex-row items-start gap-4">
@@ -69,4 +69,3 @@ function CalendarDaysIcon(props) {
     </svg>
   )
 }
-
