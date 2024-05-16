@@ -5,15 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37cfcfbe-27d2-4d01-83c4-dbc631fad5a7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide_6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide_7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide_8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide_9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/output/merged_output.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/article.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/article.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hero.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/card.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/card.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/articles/[id].jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/articles/[id].jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +92,8 @@
       <workItem from="1715711603495" duration="6839000" />
       <workItem from="1715727332261" duration="3081000" />
       <workItem from="1715800582662" duration="40000" />
-      <workItem from="1715800631657" duration="5766000" />
+      <workItem from="1715800631657" duration="6178000" />
+      <workItem from="1715853744861" duration="8808000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
 import 'github-markdown-css';
 import 'tailwindcss/tailwind.css'
 import '/public/styles/custom.css';
@@ -28,6 +27,7 @@ export function Article() {
                 });
 
                 setHtmlContent(response.data);
+                console.log(response.data);
 
             });
     }, []);
@@ -39,7 +39,7 @@ export function Article() {
             <main className="flex-1">
                 <div className="px-4 md:px-6 py-12 md:py-24 lg:py-32">
                     <div className="prose prose-gray max-w-6xl mx-auto dark:prose-invert">
-                        <article className="markdown-body custom-class" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                        <article className="markdown-body" dangerouslySetInnerHTML={{ __html: htmlContent }} />
                         <div className="mt-12 flex items-center gap-4">
                             <Button variant="outline">Share</Button>
                             <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">

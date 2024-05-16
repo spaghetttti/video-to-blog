@@ -15,7 +15,7 @@ export function Hero() {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    setVideoFile(URL.createObjectURL(file));
+    setVideoFile(URL.createObjectURL(file)); 
   };
 
   const handleYoutubeLinkChange = (event) => {
@@ -28,48 +28,48 @@ export function Hero() {
     setTimeout(() => {
       setIsLoading(false);
       setIsFinished(true);
-    }, 3000);
-    // if (youtubeLink) {
-    //   try {
-    //     const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST}/process-youtube-link`, {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify({ youtubeLink }),
-    //     });
-    //     const data = await response.json();
-    //     console.log('Success:', data);
-    //     setIsLoading(false);
-    //     //  Handle successful response (e.g., display message)
-    //   } catch (error) {
-    //     console.error('Error:', error);
-    //     setIsLoading(false);
-    //     //  Handle errors (e.g., display error message)
-    //   }
-    // } else if (videoFile) {
-    //   try {
-    //     const formData = new FormData();
-    //     formData.append('videoFile', videoFile);
+    }, 3000)
+  //    if (youtubeLink) {
+  //      try {
+  //        const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST}/process-youtube-link`, {
+  //          method: 'POST',
+  //          headers: {
+  //            'Content-Type': 'application/json',
+  //          },
+  //          body: JSON.stringify({ youtubeLink }),
+  //        });
+  //        const data = await response.json();
+  //        console.log('Success:', data);
+  //        setIsLoading(false);
+  //         //  Handle successful response (e.g., display message)
+  //      } catch (error) {
+  //        console.error('Error:', error);
+  //        setIsLoading(false);
+  //         //  Handle errors (e.g., display error message)
+  //      }
+  //    } else if (videoFile) {
+  //      try {
+  //        const formData = new FormData();
+  //        formData.append('videoFile', videoFile);
 
-    //     const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST}/process-video-file`, {
-    //       method: 'POST',
-    //       body: formData,
-    //     });
-    //     const data = await response.json();
-    //     console.log('Success:', data);
-    //     setIsLoading(false);
-    //     //  Handle successful response (e.g., display message)
-    //   } catch (error) {
-    //     console.error('Error:', error);
-    //     setIsLoading(false);
-    //     //  Handle errors (e.g., display error message)
-    //   }
-    // } else {
-    //   //  Handle case where neither link nor file is provided
-    //   console.error('Please provide either a YouTube link or a YouTube video file');
-    //   setIsLoading(false);
-    // }
+  //        const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST}/process-video-file`, {
+  //          method: 'POST',
+  //          body: formData,
+  //        });
+  //        const data = await response.json();
+  //        console.log('Success:', data);
+  //        setIsLoading(false);
+  //         //  Handle successful response (e.g., display message)
+  //      } catch (error) {
+  //        console.error('Error:', error);
+  //        setIsLoading(false);
+  //         //  Handle errors (e.g., display error message)
+  //      }
+  //    } else {
+  //       //  Handle case where neither link nor file is provided
+  //      console.error('Please provide either a YouTube link or a YouTube video file');
+  //      setIsLoading(false);
+  //    }
   };
 
   return (
