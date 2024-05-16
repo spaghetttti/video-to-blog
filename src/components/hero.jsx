@@ -12,6 +12,9 @@ export function Hero() {
   const [videoFile, setVideoFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const [articleId, setArticleId] = useState(null);
+
+
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -25,51 +28,52 @@ export function Hero() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsFinished(true);
-    }, 3000)
-  //    if (youtubeLink) {
-  //      try {
-  //        const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST}/process-youtube-link`, {
-  //          method: 'POST',
-  //          headers: {
-  //            'Content-Type': 'application/json',
-  //          },
-  //          body: JSON.stringify({ youtubeLink }),
-  //        });
-  //        const data = await response.json();
-  //        console.log('Success:', data);
-  //        setIsLoading(false);
-  //         //  Handle successful response (e.g., display message)
-  //      } catch (error) {
-  //        console.error('Error:', error);
-  //        setIsLoading(false);
-  //         //  Handle errors (e.g., display error message)
-  //      }
-  //    } else if (videoFile) {
-  //      try {
-  //        const formData = new FormData();
-  //        formData.append('videoFile', videoFile);
+     if (youtubeLink) {
+       try {
+         const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST}/process-youtube-link`, {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           body: JSON.stringify({ youtubeLink }),
+         });
+         const data = await response.json();
+         console.log('Success:', data);
+         const article_id = data.article_id;
+         setIsLoading(false);
+         setArticleId(article_id); // Store article_id in state
+         setIsFinished(true);
 
-  //        const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST}/process-video-file`, {
-  //          method: 'POST',
-  //          body: formData,
-  //        });
-  //        const data = await response.json();
-  //        console.log('Success:', data);
-  //        setIsLoading(false);
-  //         //  Handle successful response (e.g., display message)
-  //      } catch (error) {
-  //        console.error('Error:', error);
-  //        setIsLoading(false);
-  //         //  Handle errors (e.g., display error message)
-  //      }
-  //    } else {
-  //       //  Handle case where neither link nor file is provided
-  //      console.error('Please provide either a YouTube link or a YouTube video file');
-  //      setIsLoading(false);
-  //    }
+          //  Handle successful response (e.g., display message)
+       } catch (error) {
+         console.error('Error:', error);
+         setIsLoading(false);
+          //  Handle errors (e.g., display error message)
+       }
+     } else if (videoFile) {
+       try {
+         const formData = new FormData();
+         formData.append('videoFile', videoFile);
+
+         const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST}/process-video-file`, {
+           method: 'POST',
+           body: formData,
+         });
+         const data = await response.json();
+         console.log('Success:', data.article_id);
+         const article_id = data.article_id;
+         setIsLoading(false);
+          //  Handle successful response (e.g., display message)
+       } catch (error) {
+         console.error('Error:', error);
+         setIsLoading(false);
+          //  Handle errors (e.g., display error message)
+       }
+     } else {
+        //  Handle case where neither link nor file is provided
+       console.error('Please provide either a YouTube link or a YouTube video file');
+       setIsLoading(false);
+     }
   };
 
   return (
@@ -140,7 +144,7 @@ export function Hero() {
         {!isLoading && isFinished && (
           <div>
             <h2 className="text-xl font-semibold">Your article is ready!</h2>
-            <ArticleCard />
+            <ArticleCard articleId={articleId} />
           </div>
         )}
         <div className="grid gap-6">
