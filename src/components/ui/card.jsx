@@ -1,13 +1,15 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
+import Link from "next/link";
 
-const Card = React.forwardRef(({ imgSrc, imgAlt, title, description, className, ...props }, ref) => {
+const Card = React.forwardRef(({ id, imgSrc, imgAlt, title, description, className, ...props }, ref) => {
   const maxLength = 100;
   const trimmedDescription = description.length > maxLength ? 
     description.substring(0, maxLength) + "..." : 
     description;
 
   return (
+    <Link href={`/articles/${id}`} passHref>
     <div
       ref={ref}
       className={cn(
@@ -28,7 +30,7 @@ const Card = React.forwardRef(({ imgSrc, imgAlt, title, description, className, 
       <div ref={ref} className={cn("p-6 pt-0", className)}>
         <h3
           ref={ref}
-          className={cn("text-2xl font-semibold leading-none tracking-tight pb-2", className)}
+          className={cn("text-xl font-semibold leading-none tracking-tight pb-2", className)}
         >
           {title}
         </h3>
@@ -40,6 +42,7 @@ const Card = React.forwardRef(({ imgSrc, imgAlt, title, description, className, 
         </p>
       </div>
     </div>
+    </Link>
   )
 })
 

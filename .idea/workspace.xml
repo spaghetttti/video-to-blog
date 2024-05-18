@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="37cfcfbe-27d2-4d01-83c4-dbc631fad5a7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/article.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/article.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hero.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/card.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/card.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +83,8 @@
       <workItem from="1715800582662" duration="40000" />
       <workItem from="1715800631657" duration="6178000" />
       <workItem from="1715853744861" duration="13446000" />
+      <workItem from="1715988101561" duration="307000" />
+      <workItem from="1716050969615" duration="25000" />
     </task>
     <servers />
   </component>
@@ -99,17 +101,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/article.jsx</url>
-          <line>14</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

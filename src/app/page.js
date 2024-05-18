@@ -8,6 +8,8 @@ export default function Home() {
     checkServerConnection();
   }, []);
   return (
-      <Hero />
+    <div> 
+       <Hero />
+    </div>
   );
 }
