@@ -14,7 +14,7 @@ import { useEffect } from "react";
 
 export function Hero() {
   const [youtubeLink, setYoutubeLink] = useState("");
-  const [videoFile, setVideoFile] = useState(null);
+  // const [videoFile, setVideoFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [articleId, setArticleId] = useState(null);
@@ -44,9 +44,9 @@ export function Hero() {
 
   console.log("articles", articles[0]);
 
-  const handleFileChange = (event) => {
-    setVideoFile(event.target.files[0]);
-  };
+  // const handleFileChange = (event) => {
+  //   setVideoFile(event.target.files[0]);
+  // };
 
   const handleYoutubeLinkChange = (event) => {
     setYoutubeLink(event.target.value);
@@ -77,28 +77,9 @@ export function Hero() {
          setIsLoading(false);
           //  Handle errors (e.g., display error message)
        }
-     } else if (videoFile) {
-       try {
-         const formData = new FormData();
-         formData.append('videoFile', videoFile);
-
-         const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_HOST}/process-video-file`, {
-           method: 'POST',
-           body: formData,
-         });
-         const data = await response.json();
-         console.log('Success:', data.article_id);
-         const article_id = data.article_id;
-         setIsLoading(false);
-          //  Handle successful response (e.g., display message)
-       } catch (error) {
-         console.error('Error:', error);
-         setIsLoading(false);
-          //  Handle errors (e.g., display error message)
-       }
      } else {
         //  Handle case where neither link nor file is provided
-       console.error('Please provide either a YouTube link or a YouTube video file');
+       console.error('Please provide either a YouTube link');
        setIsLoading(false);
      }
   };
@@ -133,7 +114,7 @@ export function Hero() {
               <div className="grid gap-4">
                 <h2 className="text-xl font-semibold">Add a Video</h2>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
+                  {/* <div className="space-y-2">
                     <Label htmlFor="video-file">Upload a Video</Label>
                     <Input
                       accept="video/*"
@@ -142,7 +123,7 @@ export function Hero() {
                       type="file"
                       onChange={handleFileChange}
                     />
-                  </div>
+                  </div> */}
                   <div className="space-y-2">
                     <Label htmlFor="youtube-link">
                       Or enter a YouTube link
@@ -170,11 +151,11 @@ export function Hero() {
         )}
       </div>
 
-      {videoFile && !isFinished && (
+      {/* {videoFile && !isFinished && (
         <div className="mb-4 flex justify-center">
           <ReactPlayer url={videoFile} controls />
         </div>
-      )}
+      )} */}
 
       {youtubeLink && !isFinished && (
         <div className="mb-4 flex justify-center">
