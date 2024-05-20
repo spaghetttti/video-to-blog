@@ -30,4 +30,4 @@ The Next.js app follows a standard folder structure:
 - `pages/`: Contains Next.js pages, where each file represents a route in the application.
 - `components/`: Contains React components used throughout the application.
 - `public/`: Contains static assets like images, fonts, and favicon.ico.
-- `styles/`: Contains global styles or CSS-in-JS solutions used for styling.
+- `ui/`: Contains global styles or CSS-in-JS solutions used for styling.
